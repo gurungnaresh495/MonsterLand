@@ -235,11 +235,11 @@ public class EnemyFactory
 
         for (int i = 0; i < count; i++)
         {
-            _zombiesPool.Push(new Zombie(health, level, armor));
+            _werewolvesPool.Push(new Werewolf(health, level, armor));
         }
     }
 
-    private (int health, int level, int armor) GetZombieStatus(int areaLvl)
+    private (int health, int level, int armor) GetWerewolfStatus(int areaLvl)
     {
         int health, armor, level;
 
