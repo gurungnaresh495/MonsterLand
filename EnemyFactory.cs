@@ -15,7 +15,7 @@ public class EnemyFactory
     {
         _areaLevel = areaLevel;
         PreLoadZombies();
-
+        PreLoadGiants();
     }
 
     // ***********************************************************
