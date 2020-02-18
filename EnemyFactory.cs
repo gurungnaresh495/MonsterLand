@@ -113,6 +113,62 @@ public class EnemyFactory
         _zombiesPool.Push(zombie);
     }
 
+
+    private void PreLoadGiants()
+    {
+        // this code would be unique to you and could be much simpler
+        // this method GetZombieStatus just makes the zombies tougher
+        // as the level goes up
+        int count;
+        int health;
+        int armor;
+        int level;
+
+        if (_areaLevel < 3)
+        {
+            count = 15;
+        }
+        else if (_areaLevel >= 3 && _areaLevel < 10)
+        {
+            count = 50;
+        }
+        else
+        {
+            count = 200;
+        }
+
+        (health, level, armor) = GetGiantStatus(_areaLevel);
+
+        for (int i = 0; i < count; i++)
+        {
+            _giantsPool.Push(new Giant(health, level, armor));
+        }
+    }
+
+    private (int health, int level, int armor) GetGiantStatus(int areaLvl)
+    {
+        int health, armor, level;
+
+        if (areaLvl < 3)
+        {
+            health = 100;
+            level = 2;
+            armor = 15;
+        }
+        else if (areaLvl >= 3 && areaLvl < 10)
+        {
+            health = 200;
+            level = 5;
+            armor = 15;
+        }
+        else
+        {
+            health = 300;
+            level = 8;
+            armor = 15;
+        }
+        return (health, level, armor);
+    }
     // ***********************************************************
     // This is the method you call whenever you need a giant
     // instead of using the New keyword
@@ -152,6 +208,61 @@ public class EnemyFactory
     // instead of using the New keyword
     // ***********************************************************
 
+    private void PreLoadWerewolves()
+    {
+        // this code would be unique to you and could be much simpler
+        // this method GetZombieStatus just makes the zombies tougher
+        // as the level goes up
+        int count;
+        int health;
+        int armor;
+        int level;
+
+        if (_areaLevel < 3)
+        {
+            count = 15;
+        }
+        else if (_areaLevel >= 3 && _areaLevel < 10)
+        {
+            count = 50;
+        }
+        else
+        {
+            count = 200;
+        }
+
+        (health, level, armor) = GetWerewolfStatus(_areaLevel);
+
+        for (int i = 0; i < count; i++)
+        {
+            _zombiesPool.Push(new Zombie(health, level, armor));
+        }
+    }
+
+    private (int health, int level, int armor) GetZombieStatus(int areaLvl)
+    {
+        int health, armor, level;
+
+        if (areaLvl < 3)
+        {
+            health = 100;
+            level = 2;
+            armor = 15;
+        }
+        else if (areaLvl >= 3 && areaLvl < 10)
+        {
+            health = 200;
+            level = 5;
+            armor = 15;
+        }
+        else
+        {
+            health = 300;
+            level = 8;
+            armor = 15;
+        }
+        return (health, level, armor);
+    }
 
     public Werewolf SpawnWereWolf(int areaLevel)
     {
