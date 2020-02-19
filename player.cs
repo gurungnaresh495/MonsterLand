@@ -13,7 +13,7 @@ namespace game1
         // which woukd break liskoff's rule
         //i.e the subclass could have more that one instance 
 
-        private int level = 0;
+        private int level;
         private string name = "n/a";
 
         // this must be static because the constuctor is static
@@ -37,8 +37,8 @@ namespace game1
 
         public int Level
         {
-            get { return this.Level; }
-            set { this.Level = value; }
+            get { return this.level; }
+            set { this.level = value; }
         }
 
         public static player Theplayer

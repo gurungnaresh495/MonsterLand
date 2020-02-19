@@ -15,10 +15,15 @@ namespace game1
         //having a Concrete class in the List would Voilate SOLID
         //we would limited to only gaints
         //private List <> alistOfMonsters = new List<>();
+        List<Imonster> aListOfMonster = new List<Imonster>();
+        private MonsterFactory aFactory = new MonsterFactory();
+        private EnemyFactory thefactory = new EnemyFactory(5); 
 
-        private MonstorFactory aFactory = new MonstorFactory();
+        public EnemyFactory Thefactory
+        {
+            get { return thefactory; }
+        }
         public gamesecene1()
-
         {
             //often this would be Player.Instance;
             this.aPlayer = player.Theplayer;
@@ -26,7 +31,7 @@ namespace game1
             this.aPlayer.TheWeapon = new Sword(10, 5);
             
     
-            aListOfMonster = aFactory.SpawnMonster(this.aPlayer.Level);
+            aListOfMonster = aFactory.SpawnMonster(aPlayer.Level, thefactory);
 
             foreach(var m in aListOfMonster)
             {
