@@ -8,9 +8,9 @@ namespace game1
 {
     public class MonsterFactory
     {
-        public List<Imonster> SpawnMonster(int aLevel, EnemyFactory enemyFactory)
+        public List<Monster> SpawnMonster(int aLevel, EnemyFactory enemyFactory)
         {
-            List<Imonster> aListOfMonsters = new List<Imonster>();
+            List<Monster> aListOfMonsters = new List<Monster>();
             // We could throw the if statement below into another class
             // and use the strategy method to replace the if statement
             // as we experimented with difficulty levels
@@ -20,7 +20,7 @@ namespace game1
             {
                 int i = 0;
 
-                while (i < 10)
+                while (i < 30)
                 {
                     aListOfMonsters.Add(enemyFactory.SpawnZombie(aLevel));
                     i = i + 1;
@@ -33,12 +33,12 @@ namespace game1
                 int i = 0;
                 int j = 0;
 
-                while (i < 10)
+                while (i < 30)
                 {
                     aListOfMonsters.Add(enemyFactory.SpawnZombie(aLevel));
                     i = i + 1;
                 }
-                while (j < 10)
+                while (j < 30)
                 {
                     aListOfMonsters.Add(enemyFactory.SpawnGiant(aLevel));
                     j = j + 1;
@@ -51,17 +51,17 @@ namespace game1
                 int j = 0;
                 int k = 0;
 
-                while (i < 10)
+                while (i < 30)
                 {
                     aListOfMonsters.Add(enemyFactory.SpawnZombie(aLevel));
                     i = i + 1;
                 }
-                while (j < 10)
+                while (j < 30)
                 {
                     aListOfMonsters.Add(enemyFactory.SpawnGiant(aLevel));
                     j = j + 1;
                 }
-                while (k < 10)
+                while (k < 30)
                 {
                     aListOfMonsters.Add(enemyFactory.SpawnWereWolf(aLevel));
                     k = k + 1;

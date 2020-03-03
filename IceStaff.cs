@@ -27,11 +27,30 @@ namespace game1
             get { return this.roundsParalyzed; }
         }
 
-        public void Use(Imonster monster)
+        public void Use(Monster monster, EnemyFactory enemyFactory, List<Monster> aListOfMonster)
         {
             monster.damageRecieved(this.damage, 0);
-            monster.RoundsParalyzed = roundsParalyzed;
-            monster.Paralyzed = true;
+            if (monster.Health == 0)
+            {
+                aListOfMonster.Remove(monster);
+                if (monster.GetType().Name == "Zombie")
+                {
+                    enemyFactory.ReclaimZombie(monster);
+                }
+                else if (monster.GetType().Name == "Werewolf")
+                {
+                    enemyFactory.ReclaimWerewolf(monster);
+                }
+                else
+                {
+                    enemyFactory.ReclaimGiant(monster);
+                }
+            }
+            else
+            {
+                monster.RoundsParalyzed = roundsParalyzed;
+                monster.Paralyzed = true;
+            }
         }
     }
 }

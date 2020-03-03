@@ -118,6 +118,7 @@ namespace game1
                     }
                 }
             }
+            
         }
 
         public void Attack(player Player)
@@ -133,7 +134,7 @@ namespace game1
         }
 
 
-        public virtual string toString()
+        public override string ToString()
         {
             return " ger";
         }

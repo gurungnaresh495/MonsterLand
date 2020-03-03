@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace game1
 {
+    // Interface for all the possible weapons
     public interface IWeapon
     {
         int Damage { get; }
-        void Use(Imonster monster);
+        void Use(Monster monster, EnemyFactory enemyFactory, List<Monster> aListOfMonster);
     }
 }

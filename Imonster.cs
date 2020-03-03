@@ -21,6 +21,6 @@ namespace game1
         void Attack(player aPlayer);
         void Defend(player aPlayer);
         void damageRecieved(int damage, int armourDamage);
-        string toString();
+        string ToString();
     }
 }

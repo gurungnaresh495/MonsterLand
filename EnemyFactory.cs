@@ -6,9 +6,12 @@ namespace game1
     public class EnemyFactory
     {
         private int _areaLevel;
-        private Stack<Zombie> _zombiesPool = new Stack<Zombie>();
-        private Stack<Werewolf> _werewolvesPool = new Stack<Werewolf>();
-        private Stack<Giant> _giantsPool = new Stack<Giant>();
+
+        //stacks for preloading monsters to avoid creating new object every time we need 
+        // a monster
+        private Stack<Monster> _zombiesPool = new Stack<Monster>();
+        private Stack<Monster> _werewolvesPool = new Stack<Monster>();
+        private Stack<Monster> _giantsPool = new Stack<Monster>();
 
         // gets and sets
         public int AreaLevel { get => _areaLevel; }
@@ -89,7 +92,7 @@ namespace game1
         // ***********************************************************
 
 
-        public Zombie SpawnZombie(int areaLevel)
+        public Monster SpawnZombie(int areaLevel)
         {
             if (_zombiesPool.Count > 0)
             {
@@ -108,13 +111,14 @@ namespace game1
 
 
 
-        public void ReclaimZombie(Zombie zombie)
+        public void ReclaimZombie(Monster zombie)
         {
             (int health, int level, int armor) = GetZombieStatus(_areaLevel);
             zombie.Health = health;
             zombie.Armour = armor;
             zombie.Alive = true;
             _zombiesPool.Push(zombie);
+            
         }
 
 
@@ -179,11 +183,12 @@ namespace game1
         // ***********************************************************
 
 
-        public Giant SpawnGiant(int areaLevel)
+        public Monster SpawnGiant(int areaLevel)
         {
             if (_giantsPool.Count > 0)
             {
                 return _giantsPool.Pop();
+                
             }
             else
             {
@@ -198,13 +203,14 @@ namespace game1
 
 
 
-        public void ReclaimGiant(Giant giant)
+        public void ReclaimGiant(Monster giant)
         {
             (int health, int level, int armor) = GetGiantStatus(_areaLevel);
             giant.Health = health;
             giant.Armour = armor;
             giant.Alive = true;
             _giantsPool.Push(giant);
+            
         }
 
         // ***********************************************************
@@ -268,7 +274,7 @@ namespace game1
             return (health, level, armor);
         }
 
-        public Werewolf SpawnWereWolf(int areaLevel)
+        public Monster SpawnWereWolf(int areaLevel)
         {
             if (_werewolvesPool.Count > 0)
             {
@@ -287,7 +293,7 @@ namespace game1
 
 
 
-        public void ReclaimWerewolf(Werewolf werewolf)
+        public void ReclaimWerewolf(Monster werewolf)
         {
             (int health, int level, int armor) = GetWerewolfStatus(_areaLevel);
             werewolf.Health = health;

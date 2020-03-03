@@ -15,35 +15,46 @@ namespace game1
         //having a Concrete class in the List would Voilate SOLID
         //we would limited to only gaints
         //private List <> alistOfMonsters = new List<>();
-        List<Imonster> aListOfMonster = new List<Imonster>();
+        List<Monster> aListOfMonster = new List<Monster>();
         private MonsterFactory aFactory = new MonsterFactory();
-        private EnemyFactory thefactory = new EnemyFactory(5); 
+        private EnemyFactory thefactory = new EnemyFactory(22); 
 
         public EnemyFactory Thefactory
         {
             get { return thefactory; }
         }
+
+        // Constructor which acts as a gamescene and instantiate 
         public gamesecene1()
         {
             //often this would be Player.Instance;
             this.aPlayer = player.Theplayer;
+            //giving a player sword 
+            this.aPlayer.TheWeapon = new Sword(15, 8);
             
-            this.aPlayer.TheWeapon = new Sword(10, 5);
-            
-    
+            //calling the spawnMonster method of MonsterFactory class 
+            // according to player level
             aListOfMonster = aFactory.SpawnMonster(aPlayer.Level, thefactory);
-
-            foreach(var m in aListOfMonster)
+            while (aListOfMonster.Count >= 1)
             {
-                aPlayer.TheWeapon.Use(m);
-              
-            }
+                
+                for (int i = 0; i < aListOfMonster.Count; i++)
+                {
+                    
+                    Monster m = aListOfMonster[i];
+                    
+                    aPlayer.TheWeapon.Use(m, thefactory, aListOfMonster);
+               
+                }
+                //checking the monsters who are alive
+                foreach (var m in aListOfMonster)
+                {
+                    Console.WriteLine(m.ToString());
+                }
+                
 
-            foreach(var m in aListOfMonster)
-            {
-                Console.WriteLine(m.toString());
-            }
 
+            }
         }
 
     }

@@ -14,7 +14,7 @@ namespace game1
             Console.WriteLine("Werewolf with health:" + health + " and level:" + level + " created.");
         }
 
-        public override string toString()
+        public override string ToString()
         {
             return " Monster type: Werewolf \n level: " + Level + " \nhealth: " +
                 Health + "\n armour: " + Armour;

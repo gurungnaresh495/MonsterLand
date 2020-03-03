@@ -14,10 +14,10 @@ namespace game1
             Console.WriteLine("Zombie with health:" + health + " and level:" + level + " created.");
         }
 
-        public override string  toString()
+        public override string  ToString()
         {
-            return "Zombie type: Giant \n level: " + Level + " \nhealth: " +
-                Health + "\n armour: " + Armour ;
+            return "Monster type: Zombie, level: " + Level + ", health: " +
+                Health + ", armour: " + Armour ;
         }
     }
 }
